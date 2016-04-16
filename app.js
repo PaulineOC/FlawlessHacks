@@ -1,11 +1,13 @@
 
-
+// Add the script to the head of the doc to run
 var script = document.createElement('script')
 var head = document.getElementsbyTagName('head')[0]
 head.appendChild(script)
+
+// Get course names
 var iframe = document.getElementsByTagName("frame")
 iframe = iframe[1] //wants to get the second iframe only
-//var tableRows = iframe.contentWindow.getElementByTagName("tr") // returns a list []
-// tableRows.forEach(function, accumulator
-var classname = iframe.contentWindow.getElementById("P_CLASS_NAME$#")//gets element of Class: p_CLASS --> need to add a number for how
-var classtxt = classname.text
+var class_name_1 = iframe.contentWindow.getElementById("P_CLASS_NAME$#0").text
+var class_name_2 = iframe.contentWindow.getElementById("P_CLASS_NAME$#1").text
+var class_name_3 = iframe.contentWindow.getElementById("P_CLASS_NAME$#2").text
+var class_name_4 = iframe.contentWindow.getElementById("P_CLASS_NAME$#3").text
