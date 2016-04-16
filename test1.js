@@ -4,42 +4,130 @@
 //NEED TO DO PER  CLASS object
 
 var time_chunk =  time_1.split(" ");
-
-
 var day  = time_chunk[0] 
 
-var start_time  =  time_chunk[1]
-var time_only = start_time.slice(-2)
-start_time  = time_only[0]
+///WORK WITH DAYS:
 
+if(day == "MoWe"){
+	
+	var col1 = 1
+	var col2 = 3
+}
+else if (day == "TuTh"){
+	
+	var col1 = 2
+	var col2 = 4
+}
+
+else if (day == "WeFr"){
+	var col1 = 3
+	var col2 = 5
+}
+
+else{//ONLY 1 day:
+	if(day == "Mo"){
+		var single_col = 1
+	}
+
+	else if(day == "Tu"){
+		var single_col = 2
+	}
+	else if(day == "We"){
+		var single_col = 3
+	}
+
+	else if(day == "Th"){
+		var single_col = 4
+	}
+
+	else if(day == "Fr"){
+		var single_col = 5
+	}
+
+}
+
+
+
+
+
+
+
+///WORKING WITH TIMES 
+
+var start_time  =  time_chunk[1]
 
 
 //will 
 
-var end_time  =  time_chunk[1]
-time_only = start_time.slice(-2)
-end_time = time_only[0]
+var end_time  =  time_chunk[3]
+
 
 
 //CHECK INDICES IN ARRAYLIST
 
+var tmp1 = "4:00PM"
+var tmp2 = "5:45PM"
+
 var all_times = [
-"8:00","8:15","8:30","8:45",
-"9:00","9:15","9:30","9:45",
-"10:00","10:15","10:30","10:45",
-"11:00","11:15","11:30","11:45",
-"12:00","12:15","12:30","12:45",
-"1:00","1:15","1:30","1:45",
-"2:00","2:15","2:30","2:45",
-"3:00","3:15","3:30","3:45",
-"4:00","8:15","8:30","8:45",
-"5:00","8:15","8:30","8:45",
-"6:00"]
+"8:00AM","8:15AM","8:30AM","8:45AM",
+"9:00AM","9:15AM","9:30AM","9:45AM",
+"10:00AM","10:15AM","10:30","10:45AM",
+"11:00AM","11:15AM","11:30","11:45",
+"12:00PM","12:15PM","12:30","12:45",
+"1:00PM","1:15PM","1:30PM","1:45PM",
+"2:00PM","2:15PM","2:30PM","2:45PM",
+"3:00PM","3:15PM","3:30PM","3:45PM",
+"4:00PM","4:15PM","4:30PM","4:45PM",
+"5:00PM","5:15PM","5:30PM","5:45PM",
+"6:00PM" ]
 
 //Calculate difference
 
+var start_index = 0
+var end_index = 0
+var block_of_time=0
+var count2 =0
 
-//to actually color:
+
+for(j=0;j<all_times.length;j++){
+
+	if(all_times[j] == start_time ){
+		start_index = count2
+		break;
+	}
+
+	else{
+		count2++
+	}
+}
+
+
+var count3=0;
+for(j=0;j<all_times.length;j++){
+	
+	if(all_times[j] == end_time ){
+		end_index=count3
+		break;
+	}
+
+	else{
+		count3++
+	}
+}
+
+
+  var block_of_time = (end_index - start_index)
+
+
+// //to actually color? 
+
+for(int u=0;u<block_of_time;u++){
+
+
+
+}
+
+
 
 
 
