@@ -4,10 +4,18 @@ var script = document.createElement('script')
 var head = document.getElementsbyTagName('head')[0]
 head.appendChild(script)
 
-// Get course names
+// Get into iFrame
 var iframe = document.getElementsByTagName("frame")
 iframe = iframe[1] //wants to get the second iframe only
-var class_name_1 = iframe.contentWindow.document.getElementById("P_CLASS_NAME$0").text
-var class_name_2 = iframe.contentWindow.document.getElementById("P_CLASS_NAME$1").text
-var class_name_3 = iframe.contentWindow.document.getElementById("P_CLASS_NAME$2").text
-var class_name_4 = iframe.contentWindow.document.getElementById("P_CLASS_NAME$3").text
+
+// Get class names
+var name_1 = iframe.contentWindow.document.getElementById("P_CLASS_NAME$0").text
+var name_2 = iframe.contentWindow.document.getElementById("P_CLASS_NAME$1").text
+var name_3 = iframe.contentWindow.document.getElementById("P_CLASS_NAME$2").text
+var name_4 = iframe.contentWindow.document.getElementById("P_CLASS_NAME$3").text
+
+// Get class times
+var time_1 = iframe.contentWindow.document.getElementById("DERIVED_REGFRM1_SSR_MTG_SCHED_LONG$0").textContent
+var time_2 = iframe.contentWindow.document.getElementById("DERIVED_REGFRM1_SSR_MTG_SCHED_LONG$1").textContent
+var time_3 = iframe.contentWindow.document.getElementById("DERIVED_REGFRM1_SSR_MTG_SCHED_LONG$2").textContent
+var time_4 = iframe.contentWindow.document.getElementById("DERIVED_REGFRM1_SSR_MTG_SCHED_LONG$3").textContent
