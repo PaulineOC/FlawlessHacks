@@ -1,7 +1,7 @@
 
 // Add the script to the head of the doc to run
 var script = document.createElement('script')
-var head = document.getElementsbyTagName('head')[0]
+var head = document.getElementsByTagName('head')[0]
 head.appendChild(script)
 
 // Get into iFrame
@@ -19,3 +19,16 @@ var time_1 = iframe.contentWindow.document.getElementById("DERIVED_REGFRM1_SSR_M
 var time_2 = iframe.contentWindow.document.getElementById("DERIVED_REGFRM1_SSR_MTG_SCHED_LONG$1").textContent
 var time_3 = iframe.contentWindow.document.getElementById("DERIVED_REGFRM1_SSR_MTG_SCHED_LONG$2").textContent
 var time_4 = iframe.contentWindow.document.getElementById("DERIVED_REGFRM1_SSR_MTG_SCHED_LONG$3").textContent
+
+// Make button to run our script
+// var validate_button = iframe.contentWindow.document.getElementById("DERIVED_REGFRM1_SSR_VIEW_STAT_RPT")
+// var calendar_button = document.createElement("");
+
+// Add a modal div
+var cal_div = document.createElement('div')
+cal_div.setAttribute("z-index", "1")
+cal_div.setAttribute("style", "position:absolute; width:100%; height:100%; top:0; left:0; background-color:grey;")
+frames[1].document.body.appendChild(cal_div)
+// var body = document.getElementsByTagName('body')
+// var body = iframe.getElementsByTagName('body')
+// document.appendChild(cal_div)
