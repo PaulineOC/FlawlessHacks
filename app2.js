@@ -1,3 +1,6 @@
+// TO RUN: Copy and paste this script into the console of
+// the Albert shopping cart page.
+
 
 // Add the script to the head of the doc to run
 var script = document.createElement('script')
@@ -28,6 +31,7 @@ frames[1].document.body.appendChild(cal_div)
 
 // Create a table
 var table = document.createElement('table');
+table.setAttribute("id", "table");
 table.setAttribute("border", "2");
 table.setAttribute("z-index", "2");
 table.setAttribute("style", "position:absolute; left:50; width:90%; height:90%; top:0; left:0; background-color:white");
@@ -37,14 +41,15 @@ var cells = [];
 for (var i = 0; i < 41*6; i++) {
     var cell= document.createElement('td');
     cell.innerHTML = i;
+    cell.setAttribute("id", String(i));
     cells.push(cell);
 }
+cells = cells.reverse()
 
 // Create list of rows
 var rows = [];
 for (var j = 0; j < 41; j++) {
     var row = document.createElement('tr');
-    row.innerHTML = j;
     rows.push(row);
 }
 
