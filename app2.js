@@ -23,6 +23,10 @@ var time_2 = iframe.contentWindow.document.getElementById("DERIVED_REGFRM1_SSR_M
 var time_3 = iframe.contentWindow.document.getElementById("DERIVED_REGFRM1_SSR_MTG_SCHED_LONG$2").textContent
 var time_4 = iframe.contentWindow.document.getElementById("DERIVED_REGFRM1_SSR_MTG_SCHED_LONG$3").textContent
 
+// Convert times to cells
+var cellsToColor1 = getCellsToFill(time_1);
+var cellsToColor4 = getCellsToFill(time_4);
+
 // Add a modal div to "grey out" background
 var cal_div = document.createElement('div')
 cal_div.setAttribute("z-index", "1")
@@ -67,6 +71,18 @@ for (var i = 0; i < rows.length; i++) {
 
 frames[1].document.body.appendChild(table);
 
+// Color the cells that are taken. Note: cellsToColor1 and 4 are
+// defined up near the top. In my demo, classes 1 and 4 were the
+// classes with only 1-day classes, i.e. I didn't have to account for
+// Mo/We or Tu/Th coloring.
+for (var i= 0; i < cellsToColor1.length; i++) {
+    var cell = iframe.contentWindow.document.getElementById(String(cellsToColor1[i]));
+    cell.setAttribute("style", "background-color:pink");
+}
+for (var i= 0; i < cellsToColor4.length; i++) {
+    var cell = iframe.contentWindow.document.getElementById(String(cellsToColor4[i]));
+    cell.setAttribute("style", "background-color:pink");
+}
 
 
 
@@ -86,21 +102,82 @@ frames[1].document.body.appendChild(table);
 // 	frames[1].document.body.appendChild(row)
 // }
 
+function getCellsToFill(time) {
+    var time_chunk =  time.split(" ");
+    var day  = time_chunk[0]
+    var cellsToColor = []
+
+    ///WORK WITH DAYS:
+    if(day == "MoWe"){
+        var col1 = 1
+        var col2 = 3
+    } else if (day == "TuTh"){
+        var col1 = 2
+        var col2 = 4
+    } else if (day == "WeFr"){
+        var col1 = 3
+        var col2 = 5
+    } else { //ONLY 1 day:
+        if(day == "Mo"){
+            var single_col = 1
+        }
+        else if(day == "Tu"){
+            var single_col = 2
+        }
+        else if(day == "We"){
+            var single_col = 3
+        }
+        else if(day == "Th"){
+            var single_col = 4
+        }
+        else if(day == "Fr"){
+            var single_col = 5
+        }
+    }
+
+    ///WORKING WITH TIMES
+    var start_time  =  time_chunk[1]
+    var end_time  =  time_chunk[3]
+
+    //CHECK INDICES IN ARRAYLIST
+
+    var all_times = [
+    "8:00AM","8:15AM","8:30AM","8:45AM",
+    "9:00AM","9:15AM","9:30AM","9:45AM",
+    "10:00AM","10:15AM","10:30","10:45AM",
+    "11:00AM","11:15AM","11:30","11:45",
+    "12:00PM","12:15PM","12:30","12:45",
+    "1:00PM","1:15PM","1:30PM","1:45PM",
+    "2:00PM","2:15PM","2:30PM","2:45PM",
+    "3:00PM","3:15PM","3:30PM","3:45PM",
+    "4:00PM","4:15PM","4:30PM","4:45PM",
+    "5:00PM","5:15PM","5:30PM","5:45PM",
+    "6:00PM" ]
 
 
+    for (var i = 0; i < all_times.length; i++) {
+        if (all_times[i] === start_time) {
+            var start_cell = i * 6 + single_col;
+            cellsToColor.push(start_cell);
+        }
+    }
 
+    for (var i = 0; i < all_times.length; i++) {
+        if (all_times[i] === end_time) {
+            var end_cell = i * 6 + single_col;
+            cellsToColor.push(end_cell);
+        }
+    }
+    var start_cell = cellsToColor[0];
+    var end_cell = cellsToColor[1];
+    console.log(start_cell);
+    console.log(end_cell);
 
+    for (var i = start_cell; i < end_cell; i+=6) {
+        console.log(i);
+        cellsToColor.push(i);
+    }
 
-// add rows
-
-
-
-// this was the stupid white box
-//var cal_div2 = document.createElement('div')
-//cal_div2.setAttribute("z-index", "2")
-//cal_div2.setAttribute("style", "position:absolute; width:80%; //height:75%; top:100; left:175; background-color:white;")
-//frames[1].document.body.appendChild(cal_div2)
-
-// var body = document.getElementsByTagName('body')
-// var body = iframe.getElementsByTagName('body')
-// document.appendChild(cal_div)
+    console.log(cellsToColor);
+    return cellsToColor;
+}
