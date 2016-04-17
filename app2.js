@@ -84,22 +84,25 @@ for (var i= 0; i < cellsToColor4.length; i++) {
     cell.setAttribute("style", "background-color:pink");
 }
 
-
-
-	// var left = 100 + (i * 238)
-	// var styles = "position: absolute; width:15%; height:75%; top:100; left: " + left + ";background-color:lightblue; border:1px solid black;"
-	// var col = document.createElement('div')
-	// col.setAttribute("z-index", "2")
-	// col.setAttribute("style", styles)
-	// frames[1].document.body.appendChild(col)
-//     var j;
-// for( j = 0; j < 41; j++){
-// 	var top = 100 + (j * 10)
-// 	var styles = "position: absolute; width:90%; height:1.875%; top: " + top + "; left: 100;background-color:transparent; border:1px solid black;"
-// 	var row = document.createElement('div')
-// 	row.setAttribute("z-index", "3")
-// 	row.setAttribute("style", styles)
-// 	frames[1].document.body.appendChild(row)
+// This is the broken code for filling in the first column with time
+// names.
+// for (var j = 0; j < all_times.length; j++) {
+//     for (var i = 0; i < 245; i+=6) {
+//         var all_times = [
+//         "8:00AM","8:15AM","8:30AM","8:45AM",
+//         "9:00AM","9:15AM","9:30AM","9:45AM",
+//         "10:00AM","10:15AM","10:30","10:45AM",
+//         "11:00AM","11:15AM","11:30","11:45",
+//         "12:00PM","12:15PM","12:30","12:45",
+//         "1:00PM","1:15PM","1:30PM","1:45PM",
+//         "2:00PM","2:15PM","2:30PM","2:45PM",
+//         "3:00PM","3:15PM","3:30PM","3:45PM",
+//         "4:00PM","4:15PM","4:30PM","4:45PM",
+//         "5:00PM","5:15PM","5:30PM","5:45PM",
+//         "6:00PM" ]
+//         var cell = iframe.contentWindow.document.getElementById(String(i));
+//         cell.innerHTML = all_times[j]
+//     }
 // }
 
 function getCellsToFill(time) {
