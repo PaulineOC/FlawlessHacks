@@ -3,13 +3,17 @@
 
 
 // Add the script to the head of the doc to run
-var script = document.createElement('script')
-var head = document.getElementsByTagName('head')[0]
-head.appendChild(script)
+// Note: We should write the entire script (i.e. everything
+// past these 3 lines) into this "script" element, and then
+// all we have to do in the console is put the script in the
+// head to make it run.
+var script = document.createElement('script');
+var head = document.getElementsByTagName('head')[0];
+head.appendChild(script);
 
 // Get into iFrame
-var iframe = document.getElementsByTagName("frame")
-iframe = iframe[1] //wants to get the second iframe only
+var iframe = document.getElementsByTagName("frame");
+iframe = iframe[1];
 
 // Get class names
 var name_1 = iframe.contentWindow.document.getElementById("P_CLASS_NAME$0").text
@@ -69,6 +73,7 @@ for (var i = 0; i < rows.length; i++) {
     table.appendChild(rows[i]);
 }
 
+// Append table to the iframe
 frames[1].document.body.appendChild(table);
 
 // Color the cells that are taken. Note: cellsToColor1 and 4 are
